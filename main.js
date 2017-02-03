@@ -1,80 +1,73 @@
 // first level
-function firstLevel(){
-    while (north(isFree)) {
-        north(isFree);
+var firstLevel = function () {
+    while (isFree('north')) {
+        north();
         console.log(map());
-        if (north(isFree) == false)
-            return
     }
-}
+};
 firstLevel();
 
 
 // second level
-while (true) {
-    east(isFree);
-    console.log(map());
-    if (east(isFree) == false)
-        break
-
-}
-
-// third
-while (south(isFree) || east(isFree)) {
-    if (south(isFree)) {
-        south();
-        console.log(map());
-    } else if (east(isFree)) {
-        east();
+var secondLevel = function () {
+    while (isFree('east')) {
+        east(isFree);
         console.log(map());
     }
-}
+};
+secondLevel();
+
+// third
+var thirdLevel = function () {
+    while (isFree('east') || isFree('south')) {
+        if (isFree('east') == false && isFree('south') == false)
+            break;
+        east();
+        console.log(map());
+        south();
+        console.log(map());
+    }
+};
+thirdLevel();
 
 // fourth
 while (south(isFree) || east(isFree)) {
     if (east(isFree)) {
         east();
         console.log(map());
-    } else if (south(isFree)) {
+    }
+    if (south(isFree)) {
         south();
         console.log(map());
     }
 }
 
 // fifth
-for (; east(isFree);) {
-    east();
+while (isFree('east')) {
+    east(isFree);
     console.log(map());
 }
-for (; south(isFree);) {
-    south();
-    console.log(map());
+while (true) {
+    if (isFree('south')) {
+        while (isFree('south'))
+            south();
+        console.log(map());
+    }
+    else if (isFree('north')) {
+        while (isFree('north'))
+            north();
+        console.log(map());
+    }
+    if (isFree('east')) {
+        while (isFree('east'))
+            east();
+        console.log(map());
+    }
+    else if (isFree('west')) {
+        while (isFree('west'))
+            west();
+        console.log(map());
+    }
 }
-for (; west(isFree);) {
-    west();
-    console.log(map());
-}
-for (; south(isFree);) {
-    south();
-    console.log(map());
-}
-for (; west(isFree);) {
-    west();
-    console.log(map());
-}
-for (; north(isFree);) {
-    north();
-    console.log(map());
-}
-for (; west(isFree);) {
-    west();
-    console.log(map());
-}
-for (; south(isFree);) {
-    south();
-    console.log(map());
-}
-for (; east(isFree);) {
-    east();
-    console.log(map());
-}
+
+
