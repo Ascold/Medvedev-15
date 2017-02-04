@@ -1,3 +1,4 @@
+//universal algorithm for 5 levels
 function myFunction() {
     var maxStepCount = 70;
     var stepResult = "";
@@ -29,7 +30,7 @@ function myFunction() {
         }
     }
 }
-
+//cycle launch passing levels for 5 times
 for (var i = 1; i < 6; i++) {
     myFunction();
     i == 5 ? console.log("5 Levels completed") : console.log("Level " + i + " passed")
